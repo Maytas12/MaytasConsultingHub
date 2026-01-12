@@ -1,0 +1,378 @@
+/* MaytasConsultingHub Custom Styles */
+
+/* Variables */
+:root {
+    --maytas-primary: #1a365d; /* Deep Navy */
+    --maytas-secondary: #f7fafc; /* Light Gray */
+    --maytas-accent: #3182ce; /* Professional Blue */
+    --maytas-text: #2d3748; /* Dark Gray */
+    --maytas-light: #edf2f7; /* Very Light Gray */
+    --maytas-white: #ffffff;
+    --maytas-dark: #1a202c; /* Dark Slate */
+    --maytas-success: #38a169; /* Green */
+    --maytas-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--maytas-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--maytas-primary);
+}
+
+/* Navbar */
+.maytas-navbar {
+    background: linear-gradient(135deg, rgba(26, 54, 93, 0.95) 0%, rgba(49, 130, 206, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.maytas-navbar .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--maytas-white) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.maytas-navbar .navbar-brand:hover {
+    transform: scale(1.05);
+    color: var(--maytas-accent) !important;
+}
+
+.maytas-navbar .navbar-nav .nav-link {
+    color: var(--maytas-white) !important;
+    font-weight: 500;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.maytas-navbar .navbar-nav .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.maytas-navbar .navbar-nav .nav-link:hover::before {
+    left: 100%;
+}
+
+.maytas-navbar .navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: var(--maytas-accent) !important;
+}
+
+.maytas-navbar.scrolled {
+    background: linear-gradient(135deg, var(--maytas-primary) 0%, var(--maytas-accent) 100%);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+}
+
+.maytas-navbar.scrolled .navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.maytas-hero-section {
+    background: linear-gradient(135deg, var(--maytas-primary) 0%, var(--maytas-accent) 100%);
+    color: var(--maytas-white);
+    padding: 120px 0 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.maytas-hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--maytas-white);
+}
+
+.maytas-hero-section .lead {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.maytas-hero-section .btn {
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.maytas-hero-section .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Counter Section */
+.maytas-counter-section {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+}
+
+.maytas-counter {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--maytas-accent);
+    margin-bottom: 0.5rem;
+}
+
+/* Service Cards */
+.maytas-service-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.maytas-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.maytas-service-card .card-body {
+    padding: 2rem;
+}
+
+.maytas-service-card i {
+    color: var(--maytas-primary);
+    margin-bottom: 1rem;
+}
+
+/* Gallery */
+.maytas-gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.maytas-gallery-item {
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 250px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.maytas-gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.maytas-gallery-card img {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.maytas-gallery-item:hover .maytas-gallery-card img {
+    transform: scale(1.05);
+}
+
+.maytas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(26, 54, 93, 0.9); /* Using --maytas-primary with alpha */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: var(--maytas-white);
+    padding: 20px;
+    text-align: center;
+}
+
+.maytas-gallery-item:hover .maytas-overlay {
+    opacity: 1;
+}
+
+.maytas-overlay h5 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.maytas-overlay p {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Gallery Filters */
+.maytas-filter-btn {
+    margin: 0 5px;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid var(--maytas-primary);
+    background-color: transparent;
+    color: var(--maytas-primary);
+}
+
+.maytas-filter-btn:hover,
+.maytas-filter-btn.active {
+    background-color: var(--maytas-primary);
+    color: var(--maytas-white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(26, 54, 93, 0.3);
+}
+
+/* Testimonials */
+.maytas-testimonial-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.maytas-testimonial-item {
+    display: none;
+    padding: 2rem;
+    background-color: var(--maytas-light);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.maytas-testimonial-item.active {
+    display: block;
+}
+
+.maytas-testimonial-item p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.stars {
+    color: var(--maytas-accent);
+    margin-bottom: 1rem;
+}
+
+/* Contact Form */
+#maytas-contact-form .form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    transition: border-color 0.3s ease;
+}
+
+#maytas-contact-form .form-control:focus {
+    border-color: var(--maytas-primary);
+    box-shadow: 0 0 0 0.2rem rgba(26, 54, 93, 0.25);
+}
+
+#maytas-contact-form .btn {
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    background-color: var(--maytas-dark);
+}
+
+/* Scroll to Top Button */
+#maytas-scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+#maytas-scroll-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .maytas-hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .maytas-hero-section .lead {
+        font-size: 1.2rem;
+    }
+
+    .maytas-counter-section {
+        padding: 20px;
+    }
+
+    .maytas-counter {
+        font-size: 2rem;
+    }
+
+    .maytas-service-card .card-body {
+        padding: 1.5rem;
+    }
+
+    .maytas-gallery-item img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .maytas-hero-section {
+        padding: 100px 0 60px;
+        text-align: center;
+    }
+
+    .maytas-counter-section {
+        margin-top: 2rem;
+    }
+
+    .maytas-testimonial-item {
+        padding: 1.5rem;
+    }
+}
