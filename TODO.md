@@ -23,6 +23,14 @@
 - [x] Update navigation to link to separate pages
 - [x] Add more content to make it a bigger application (blog, team, resources pages)
 
+## Current Tasks - Add Cartoon-Style Animations
+- [x] Add CSS keyframes for cartoon animations (bounce, wiggle, float, pulse, shake)
+- [x] Create utility classes for animations (.maytas-bounce, .maytas-float, etc.)
+- [x] Update JS to trigger animations automatically on page load and scroll
+- [x] Apply animation classes to key elements in index.html (icons, buttons, counters)
+- [ ] Test animations on different devices
+- [ ] Apply similar animations to other pages if needed
+
 ## Followup Steps
 - [ ] Test website responsiveness on different devices
 - [ ] Verify animations and interactions work correctly across all pages

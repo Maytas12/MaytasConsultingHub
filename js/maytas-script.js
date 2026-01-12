@@ -52,14 +52,14 @@ function maytasAnimateCounters() {
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
+            const count = +counter.innerText.replace('+', ''); // Remove any existing + for calculation
             const increment = target / speed;
 
             if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
+                counter.innerText = Math.ceil(count + increment) + (counter.hasAttribute('data-plus') ? '+' : '');
                 setTimeout(updateCount, 1);
             } else {
-                counter.innerText = target;
+                counter.innerText = target + (counter.hasAttribute('data-plus') ? '+' : '');
             }
         };
         updateCount();
@@ -245,3 +245,135 @@ document.querySelectorAll('.maytas-gallery-card img').forEach(img => {
         });
     });
 });
+
+// Cartoon Animation Triggers
+function maytasTriggerCartoonAnimations() {
+    // Add floating animation to service icons
+    const serviceIcons = document.querySelectorAll('.maytas-service-card i');
+    serviceIcons.forEach((icon, index) => {
+        setTimeout(() => {
+            icon.classList.add('maytas-float');
+        }, index * 200);
+    });
+
+    // Add bounce animation to buttons on hover
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.classList.add('maytas-hover-bounce');
+    });
+
+    // Add wiggle animation to gallery overlays on hover
+    const galleryOverlays = document.querySelectorAll('.maytas-overlay');
+    galleryOverlays.forEach(overlay => {
+        overlay.addEventListener('mouseenter', () => {
+            overlay.classList.add('maytas-wiggle');
+        });
+        overlay.addEventListener('mouseleave', () => {
+            overlay.classList.remove('maytas-wiggle');
+        });
+    });
+
+    // Add pulse animation to counters when they finish counting
+    const counters = document.querySelectorAll('.maytas-counter');
+    counters.forEach(counter => {
+        const observer = new MutationObserver(() => {
+            if (counter.textContent !== '0') {
+                counter.classList.add('maytas-pulse');
+                setTimeout(() => {
+                    counter.classList.remove('maytas-pulse');
+                }, 2000);
+            }
+        });
+        observer.observe(counter, { childList: true });
+    });
+
+    // Add heartbeat animation to testimonial stars
+    const testimonialStars = document.querySelectorAll('.stars');
+    testimonialStars.forEach(stars => {
+        stars.classList.add('maytas-heartbeat');
+    });
+
+    // Add swing animation to navbar brand on hover
+    const navbarBrand = document.querySelector('.navbar-brand');
+    if (navbarBrand) {
+        navbarBrand.classList.add('maytas-hover-swing');
+    }
+
+    // Add tada animation to filter buttons when clicked
+    const filterButtons = document.querySelectorAll('.maytas-filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.add('maytas-tada');
+            setTimeout(() => {
+                button.classList.remove('maytas-tada');
+            }, 1500);
+        });
+    });
+
+    // Add rubber band animation to form submit button on hover
+    const submitButton = document.querySelector('#maytas-contact-form .btn');
+    if (submitButton) {
+        submitButton.classList.add('maytas-hover-rubber-band');
+    }
+
+    // Add jello animation to scroll to top button on hover
+    const scrollToTopBtn = document.getElementById('maytas-scroll-to-top');
+    if (scrollToTopBtn) {
+        scrollToTopBtn.classList.add('maytas-hover-jello');
+    }
+}
+
+// Trigger cartoon animations on page load
+window.addEventListener('load', function() {
+    setTimeout(maytasTriggerCartoonAnimations, 1000); // Delay to ensure elements are loaded
+});
+
+// Trigger animations when elements come into view
+function maytasTriggerOnScroll() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+
+                // Add random cartoon animation to service cards
+                if (element.classList.contains('maytas-service-card')) {
+                    const animations = ['maytas-bounce', 'maytas-wiggle', 'maytas-pulse'];
+                    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+                    element.classList.add(randomAnimation);
+                    setTimeout(() => {
+                        element.classList.remove(randomAnimation);
+                    }, 2000);
+                }
+
+                // Add shake animation to testimonial items when they become active
+                if (element.classList.contains('maytas-testimonial-item') && element.classList.contains('active')) {
+                    element.classList.add('maytas-shake');
+                    setTimeout(() => {
+                        element.classList.remove('maytas-shake');
+                    }, 500);
+                }
+
+                observer.unobserve(element);
+            }
+        });
+    }, observerOptions);
+
+    // Observe service cards
+    document.querySelectorAll('.maytas-service-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Observe testimonial items
+    document.querySelectorAll('.maytas-testimonial-item').forEach(item => {
+        observer.observe(item);
+    });
+}
+
+// Trigger scroll-based animations
+window.addEventListener('scroll', maytasTriggerOnScroll);
+window.addEventListener('load', maytasTriggerOnScroll);
